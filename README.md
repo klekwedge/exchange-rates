@@ -1,16 +1,51 @@
-# Task for Safedea frontend Intern
+# Example
 
-It is necessary to lay out an adaptive page with a list of photos.
+**You can also read this README in [English](https://github.com/klekwedge/cv/blob/main/README.EN.md).**
 
-When you click on a photo, a modal window opens with a photo, a list of comments and a form for adding comments.
+## Оглавление
 
-Handle List:
-* GET https://boiling-refuge-66454.herokuapp.com/images - get a list of photos.
-* GET https://boiling-refuge-66454.herokuapp.com/images/:imageId - Get a large image and list of comments.
-* POST https://boiling-refuge-66454.herokuapp.com/images/:imageId/comments - adding a comment (204 - OK, comment not saved).
+- [Инструкции по развертыванию](#инструкции-по-развертыванию)
+- [Обзор](#обзор)
+  - [Скриншот](#скриншот)
+  - [Ссылки](#ссылки)
+- [Мой процесс](#мой-процесс)
+  - [Стек](#стек)
+  - [Что я узнал](#что-я-узнал)
+- [Автор](#автор)
 
-We will be grateful if:
-- the application will start locally after npm i && npm run start;
-- the application is written in React;
-- no external components are used, for example, a modal window;
-- UX taken into account.
+## Инструкции по развертыванию
+
+**Для запуска проекта на вашем компьютере должны быть установлены [npm](https://nodejs.org/en/) и [git](https://git-scm.com/downloads)**
+
+1. Сделайте клон этого репозитория ```git clone https://github.com/klekwedge/example.git```
+2. Установите все необходимые пакеты npm с помощью ```npm i```
+3. Запустите проект командой ```npm run dev```
+
+## Обзор
+
+### Скриншот
+
+![Главный экран](./preview/screenshot.png)
+
+### Ссылки
+
+- [Ссылка на проект](https://github.com/klekwedge/example)
+- [Деплой](https://klekwedge-example.vercel.app/)
+
+## Мой процесс
+
+### Стек
+
+- React
+- TypeScript
+- Redux Toolkit
+- SCSS
+- Chakra UI
+
+### Что я узнал
+
+## Автор
+
+- [Вебсайт](https://klekwedge-cv.vercel.app/)
+- [Linkedin](https://www.linkedin.com/in/klekwedge/)
+- [Facebook](https://www.facebook.com/klekwedge)
