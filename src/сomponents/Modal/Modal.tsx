@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useEffect, useState } from 'react';
+import style from './Modal.module.scss';
 
-import style from '../Modal/Modal.module.css';
+const API_URL = '';
 
 function Modal({ active, setActive, id }: any) {
   const [modalContentData, setModalContentData] = useState();
@@ -18,7 +19,7 @@ function Modal({ active, setActive, id }: any) {
     const date = new Date();
     event.preventDefault();
 
-    fetch(`${'https://'}/${id}/comments`, {
+    fetch(`${API_URL}/${id}/comments`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/JSON',
