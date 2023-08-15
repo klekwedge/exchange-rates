@@ -1,30 +1,21 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import { useEffect, useState } from 'react';
-import styles from './Gallery.module.scss';
 import { IImage } from '../../types';
+import styles from './Gallery.module.scss';
 
-const API_URL = 'https://api.unsplash.com/photos';
-const API_KEY = import.meta.env.VITE_API_KEY
 
 interface GalleryProps {
   setActive: (value: boolean) => void;
   setId: (value: string) => void;
+  imageList: IImage[];
 }
 
-function Gallery({setActive, setId}: GalleryProps) {
-  const [imageList, setImageList] = useState<IImage[]>([]);
+function Gallery({setActive, setId, imageList}: GalleryProps) {
 
   const onClickSetImageList = (id: string) => {
     setActive(true);
     setId(id);
   };
 
-  useEffect(() => {
-    fetch(`${API_URL}?client_id=${API_KEY}&page=1`)
-      .then((response) => response.json())
-      .then((data) => data)
-      .then((data) => setImageList(data));
-  }, []);
 
   if (!imageList.length) {
     return <h1>Loading data, please wait</h1>;
