@@ -11,12 +11,13 @@
 }
 .modalContent {
   width: 619px;
-  height: 425px;
+  height: 400px;
   background: #ffffff;
   display: flex;
   position: relative;
   padding: 30px;
   flex-wrap: wrap;
+  border-radius: 5px;
 }
 
 .modalContentImage,
@@ -24,9 +25,11 @@
   flex-grow: 1;
   max-width: 331px;
 }
+
 .modalContentImage img {
   width: 331px;
   height: 205px;
+  border-radius: 5px;
 }
 
 .modalContentForm button {
@@ -36,17 +39,34 @@
   border: none;
   max-width: 331px;
   height: 30px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+
+  &:hover {
+    background: #1576bb;
+  }
+
 }
+
 .modalContentForm form {
   display: flex;
   flex-direction: column;
 }
 
 .modalContentForm form input {
+  outline: none;
+  padding: 2px 10px;
+  border: 1px solid gray;
+  border-radius: 5px;
   margin-bottom: 20px;
   max-width: 361px;
   height: 30px;
+
+  &:focus {
+    border: 1px solid #4997d0;
+  }
 }
+
 .comments {
   flex-grow: 1;
   width: 30%;
@@ -54,15 +74,18 @@
   margin-left: 15px;
   margin-right: 30px;
 }
+
 .comments p {
   text-align: left;
   font-family: Roboto;
   font-size: 13px;
   line-height: 15px;
 }
+
 .comments p.commentData {
   color: #999999;
 }
+
 .commentBody {
   margin-bottom: 20px;
 }
@@ -71,7 +94,6 @@
   position: absolute;
   top: 21px;
   right: 21px;
-
   width: 18px;
   height: 18px;
   background: url('../../../public/img/close.svg');
