@@ -5,17 +5,27 @@ import style from './Modal.module.scss';
 
 const API_URL = '';
 
-function Modal({ active, setActive, id }: any) {
+interface ModalProps {
+  active: boolean;
+  setActive: (value: boolean) => void;
+  id: string;
+}
+
+function Modal({ active, setActive, id }: ModalProps) {
   const [modalContentData, setModalContentData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
-  const [formData, setFormData] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    comment: '',
+  });
 
-  const closeModal = (e: any) => {
-    e.currentTarget === e.target && setActive(false);
+  const closeModal = (e: React.MouseEvent<HTMLDivElement>) => {
+    console.log('!');
+    // e.currentTarget === e.target && setActive(false);
   };
 
-  function handleSubmit(event: any) {
+  function handleSubmit(event: React.MouseEvent<HTMLButtonElement>) {
     const date = new Date();
     event.preventDefault();
 
@@ -50,7 +60,7 @@ function Modal({ active, setActive, id }: any) {
       .then(() => setIsLoading(false));
   }, [id]);
 
-  const handleChangeField = (e) => {
+  const handleChangeField = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
