@@ -11,7 +11,7 @@ function App() {
       <h1>Test APP</h1>
       <Gallery setActive={setModalActive} setId={setImageId} />
       {modalActive && (
-        <Modal active={modalActive} setActive={setModalActive} id={imgId} />
+        <Modal setActive={setModalActive} active={modalActive} id={imgId} />
       )}
     </div>
   );
