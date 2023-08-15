@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useEffect, useState } from 'react';
 import style from './Modal.module.scss';
-import { IImage } from '../../types';
+import { IComment, IImage } from '../../types';
 
 const API_URL = '';
 
@@ -15,12 +15,10 @@ interface ModalProps {
 
 function Modal({ active, imageList, id, setActive }: ModalProps) {
   const [modalContentData, setModalContentData] = useState<IImage | null>(null);
-  const [comments, setComments] = useState<IImage | null>(null);
+  const [comments, setComments] = useState<IComment[]>([]);
 
-  const [formData, setFormData] = useState({
-    name: '',
-    comment: '',
-  });
+  const [authorName, setAuthorName] = useState('');
+  const [authorComment, setAuthorComment] = useState('');
 
   const closeModal = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.currentTarget === e.target) {
@@ -29,23 +27,21 @@ function Modal({ active, imageList, id, setActive }: ModalProps) {
   };
 
   function handleSubmit(event: React.MouseEvent<HTMLButtonElement>) {
-    const date = new Date();
     event.preventDefault();
-    // fetch(`${API_URL}/${id}/comments`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/JSON',
-    //   },
-    //   body: JSON.stringify(formData),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => console.log(data))
-    //   .then(
-    //     setModalContentData({
-    //       ...modalContentData,
-    //       comments: [...modalContentData.comments, { id: null, text: formData.comment, date }],
-    //     }),
-    //   );
+    if (authorComment && authorName) {
+      setComments((pastValue) => [
+        ...pastValue,
+        {
+          author: authorName,
+          date: new Date(),
+          body: authorComment,
+          id,
+        },
+      ]);
+
+      setAuthorName('');
+      setAuthorComment('');
+    }
   }
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -62,16 +58,7 @@ function Modal({ active, imageList, id, setActive }: ModalProps) {
     } else {
       setModalContentData(null);
     }
-
-    // fetch(`${API_URL}/${id}`)
-    //   .then((response) => response.json())
-    //   .then((data) => setModalContentData(data))
-    //   .then(() => setIsLoading(false));
   }, [id]);
-
-  const handleChangeField = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   if (!modalContentData) {
     return null;
@@ -84,25 +71,30 @@ function Modal({ active, imageList, id, setActive }: ModalProps) {
           <img src={modalContentData.urls.small} alt="Gallery item" />
         </div>
         <div className={style.comments}>
-          <div className={style.commentBody}>
-            <p className={style.commentData}>12.04.2021</p>
-            <p className={style.commentText}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat impedit reiciendis enim atque neque
-              porro perferendis ullam officiis natus, eligendi incidunt, vitae totam magnam dolore quam aliquid
-              veritatis consequuntur quo.
-            </p>
-          </div>
-          {/* {modalContentData.comments.map((comment) => (
-            <div key={comment.id} className={style.commentBody}>
-              <p className={style.commentData}>{dateFormatter(comment.date)}</p>
-              <p className={style.commentText}>{comment.text}</p>
-            </div>
-          ))} */}
+          {comments
+            .filter((comment) => comment.id === id)
+            .map((comment) => (
+              <div key={comment.id} className={style.commentBody}>
+                <p className={style.commentData}>{comment.author}</p>
+                <p className={style.commentData}>{comment.date.toLocaleDateString()}</p>
+                <p className={style.commentText}>{comment.body}</p>
+              </div>
+            ))}
         </div>
         <div className={style.modalContentForm}>
           <form>
-            <input placeholder="Ваше имя" name="name" value={formData.name} onChange={handleChangeField} />
-            <input placeholder="Ваш комментарий" name="comment" value={formData.comment} onChange={handleChangeField} />
+            <input
+              placeholder="Ваше имя"
+              name="name"
+              value={authorName}
+              onChange={(e) => setAuthorName(e.target.value)}
+            />
+            <input
+              placeholder="Ваш комментарий"
+              name="comment"
+              value={authorComment}
+              onChange={(e) => setAuthorComment(e.target.value)}
+            />
             <button type="button" onClick={handleSubmit}>
               Оставить комментарий
             </button>

@@ -90,3 +90,10 @@ export interface IUrls {
     thumb: string;
     small_s3: string;
 }
+
+export interface IComment {
+    id: string;
+    author: string;
+    date: Date;
+    body: string;
+}
