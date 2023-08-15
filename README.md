@@ -47,9 +47,7 @@
 
 - React
 - TypeScript
-- Redux Toolkit
 - SCSS
-- Chakra UI
 
 ### Что я узнал
 

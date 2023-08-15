@@ -47,9 +47,7 @@ We will appreciate if:
 
 - React
 - TypeScript
-- Redux Toolkit
 - SCSS
-- Chakra UI
 
 ### What I learned
 
