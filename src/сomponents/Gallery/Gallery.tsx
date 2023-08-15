@@ -22,7 +22,6 @@ function Gallery({setActive, setId, imageList}: GalleryProps) {
   }
 
   return (
-    <div>
       <div className={styles.photoWrapper}>
         {imageList.map((photo) => (
           <img
@@ -34,7 +33,6 @@ function Gallery({setActive, setId, imageList}: GalleryProps) {
           />
         ))}
       </div>
-    </div>
   );
 }
 

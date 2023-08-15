@@ -1,21 +1,21 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useEffect, useState } from 'react';
+import { v4 } from 'uuid';
 import style from './Modal.module.scss';
 import { IComment, IImage } from '../../types';
 
-const API_URL = '';
-
 interface ModalProps {
   active: boolean;
-  id: string;
+  imageId: string;
   imageList: IImage[];
+  comments: IComment[];
   setActive: (value: boolean) => void;
+  setComments: (value: IComment[]) => void;
 }
 
-function Modal({ active, imageList, id, setActive }: ModalProps) {
+function Modal({ active, imageList, imageId, comments, setActive, setComments }: ModalProps) {
   const [modalContentData, setModalContentData] = useState<IImage | null>(null);
-  const [comments, setComments] = useState<IComment[]>([]);
 
   const [authorName, setAuthorName] = useState('');
   const [authorComment, setAuthorComment] = useState('');
@@ -29,13 +29,14 @@ function Modal({ active, imageList, id, setActive }: ModalProps) {
   function handleSubmit(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
     if (authorComment && authorName) {
-      setComments((pastValue) => [
-        ...pastValue,
+      setComments([
+        ...comments,
         {
           author: authorName,
           date: new Date(),
           body: authorComment,
-          id,
+          imageId,
+          id: v4()
         },
       ]);
 
@@ -52,13 +53,13 @@ function Modal({ active, imageList, id, setActive }: ModalProps) {
   }, []);
 
   useEffect(() => {
-    const currentImage = imageList.find((item) => item.id === id);
+    const currentImage = imageList.find((image) => image.id === imageId);
     if (currentImage) {
       setModalContentData(currentImage);
     } else {
       setModalContentData(null);
     }
-  }, [id]);
+  }, [imageId]);
 
   if (!modalContentData) {
     return null;
@@ -72,7 +73,7 @@ function Modal({ active, imageList, id, setActive }: ModalProps) {
         </div>
         <div className={style.comments}>
           {comments
-            .filter((comment) => comment.id === id)
+            .filter((comment) => comment.imageId === imageId)
             .map((comment) => (
               <div key={comment.id} className={style.commentBody}>
                 <p className={style.commentData}>{comment.author}</p>

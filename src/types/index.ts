@@ -96,4 +96,5 @@ export interface IComment {
     author: string;
     date: Date;
     body: string;
+    imageId: string;
 }
