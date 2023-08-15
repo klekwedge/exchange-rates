@@ -6,13 +6,17 @@ import { IImage } from '../../types';
 const API_URL = 'https://api.unsplash.com/photos';
 const API_KEY = import.meta.env.VITE_API_KEY
 
+interface GalleryProps {
+  setActive: (value: boolean) => void;
+  setId: (value: string) => void;
+}
 
-function Gallery(props: any) {
+function Gallery({setActive, setId}: GalleryProps) {
   const [imageList, setImageList] = useState<IImage[]>([]);
 
-  const onClickSetImageList = (id: any) => {
-    props.setActive(true);
-    props.setId(id);
+  const onClickSetImageList = (id: string) => {
+    setActive(true);
+    setId(id);
   };
 
   useEffect(() => {
