@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .modalContent {
   width: 619px;
   height: 400px;
@@ -45,7 +46,6 @@
   &:hover {
     background: #1576bb;
   }
-
 }
 
 .modalContentForm form {
@@ -76,13 +76,21 @@
 }
 
 .comments p {
-  text-align: left;
   font-family: Roboto;
   font-size: 13px;
   line-height: 15px;
 }
 
-.comments p.commentData {
+.commentHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px 10px;
+  flex-wrap: wrap;
+}
+
+.comments p.commentDate,
+.comments .commentAuthor {
   color: #999999;
 }
 

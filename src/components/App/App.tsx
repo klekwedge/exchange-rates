@@ -13,7 +13,7 @@ function App() {
   const [comments, setComments] = useState<IComment[]>([]);
 
   useEffect(() => {
-    fetch(`${API_URL}?client_id=${API_KEY}&page=1`)
+    fetch(`${API_URL}?client_id=${API_KEY}&page=1&orientation=landscape&per_page=30`)
       .then((response) => response.json())
       .then((data) => data)
       .then((data) => setImageList(data));

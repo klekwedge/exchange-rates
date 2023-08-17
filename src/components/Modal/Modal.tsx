@@ -36,7 +36,7 @@ function Modal({ active, imageList, imageId, comments, setActive, setComments }:
           date: new Date(),
           body: authorComment,
           imageId,
-          id: v4()
+          id: v4(),
         },
       ]);
 
@@ -76,8 +76,10 @@ function Modal({ active, imageList, imageId, comments, setActive, setComments }:
             .filter((comment) => comment.imageId === imageId)
             .map((comment) => (
               <div key={comment.id} className={style.commentBody}>
-                <p className={style.commentData}>{comment.author}</p>
-                <p className={style.commentData}>{comment.date.toLocaleDateString()}</p>
+                <div className={style.commentHeader}>
+                  <p className={style.commentAuthor}>{comment.author}</p>
+                  <p className={style.commentDate}>{comment.date.toLocaleDateString()}</p>
+                </div>
                 <p className={style.commentText}>{comment.body}</p>
               </div>
             ))}
