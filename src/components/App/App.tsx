@@ -3,7 +3,7 @@ import Gallery from '../Gallery/Gallery';
 import Modal from '../Modal/Modal';
 import { IComment, IImage } from '../../types';
 
-const API_URL = 'https://api.unsplash.com/photos';
+const API_URL = 'https://api.unsplash.com/search/photos';
 const API_KEY = import.meta.env.VITE_API_KEY;
 
 function App() {
@@ -13,11 +13,13 @@ function App() {
   const [comments, setComments] = useState<IComment[]>([]);
 
   useEffect(() => {
-    fetch(`${API_URL}?client_id=${API_KEY}&page=1&orientation=landscape&per_page=30`)
+    fetch(`${API_URL}?client_id=${API_KEY}&query=city&page=1&orientation=landscape&per_page=30`)
       .then((response) => response.json())
-      .then((data) => data)
+      .then((data) => data.results)
       .then((data) => setImageList(data));
   }, []);
+
+  console.log(imageList);
 
   return (
     <div className="App">
