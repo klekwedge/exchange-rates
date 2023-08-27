@@ -10,7 +10,6 @@
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
 - [Author](#author)
 
 ## Deployment instructions
@@ -19,7 +18,7 @@
 
 1. Make a clone of this repository ```git clone https://github.com/klekwedge/image-gallery.git```
 2. Install all required npm packages with ```npm i```
-3. Run the project with the command ```npm run dev```
+3. Run the project with the command ```npm run start```
 
 ## Overview
 
@@ -48,8 +47,6 @@ We will appreciate if:
 - React
 - TypeScript
 - SCSS
-
-### What I learned
 
 ## Author
 
