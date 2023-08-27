@@ -12,13 +12,18 @@
 
 .modalContent {
   display: flex;
+  flex-direction: column;
   gap: 15px;
-  flex-wrap: wrap;
   width: 619px;
   height: 400px;
-  padding: 20px;
+  padding: 20px 20px 0px;
   border-radius: 5px;
   background: #ffffff;
+}
+
+.modalBody {
+  display: flex;
+  gap: 15px;
 }
 
 .modalContentImage,
@@ -72,9 +77,10 @@
 
 .comments {
   flex-grow: 1;
-  width: 30%;
   font-size: 13px;
   line-height: 15px;
+  max-height: 340px;
+  overflow-y: scroll;
 }
 
 .commentHeader {

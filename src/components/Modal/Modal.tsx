@@ -69,45 +69,49 @@ function Modal({ active, imageList, imageId, comments, setActive, setComments }:
   return (
     <div onClick={(e) => closeModal(e)} className={active ? style.modalActive : style.modal}>
       <div className={style.modalContent}>
-        <div>
-          <img className={style.modalContentImage} src={modalContentData.urls.small} alt="Gallery item" />
-          <form className={style.modalContentForm}>
-            <input
-              placeholder="Ваше имя"
-              name="name"
-              value={authorName}
-              onChange={(e) => setAuthorName(e.target.value)}
-            />
-            <input
-              placeholder="Ваш комментарий"
-              name="comment"
-              value={authorComment}
-              onChange={(e) => setAuthorComment(e.target.value)}
-            />
-            <button type="button" onClick={handleSubmit}>
-              Оставить комментарий
-            </button>
-          </form>
+        <div className={style.modalBody}>
+          <div>
+            <img className={style.modalContentImage} src={modalContentData.urls.small} alt="Gallery item" />
+            <form className={style.modalContentForm}>
+              <input
+                placeholder="Ваше имя"
+                name="name"
+                value={authorName}
+                onChange={(e) => setAuthorName(e.target.value)}
+              />
+              <input
+                placeholder="Ваш комментарий"
+                name="comment"
+                value={authorComment}
+                onChange={(e) => setAuthorComment(e.target.value)}
+              />
+              <button type="button" onClick={handleSubmit}>
+                Оставить комментарий
+              </button>
+            </form>
+          </div>
+          <div className={style.comments}>
+            {comments
+              .filter((comment) => comment.imageId === imageId)
+              .map((comment) => (
+                <div key={comment.id} className={style.comment}>
+                  <p className={style.commentAuthor}>
+                    <BiUser />
+                    {comment.author}
+                  </p>
+                  <p className={style.commentText}>{comment.body}</p>
+                  <p className={style.commentDate}>
+                    <BiTimeFive width="10px" height="10px" />
+                    {comment.date.toLocaleString()}
+                  </p>
+                </div>
+              ))}
+          </div>
         </div>
 
-        <div className={style.comments}>
-          {comments
-            .filter((comment) => comment.imageId === imageId)
-            .map((comment) => (
-              <div key={comment.id} className={style.comment}>
-                <p className={style.commentAuthor}>
-                  <BiUser />
-                  {comment.author}
-                </p>
-                <p className={style.commentText}>{comment.body}</p>
-                <p className={style.commentDate}>
-                  <BiTimeFive width="10px" height="10px" />
-                  {comment.date.toLocaleString()}
-                </p>
-              </div>
-            ))}
-        </div>
-        <button type="button" className={style.closeButton} onClick={() => setActive(false)} >Закрыть</button>
+        <button type="button" className={style.closeButton} onClick={() => setActive(false)}>
+          Закрыть
+        </button>
       </div>
     </div>
   );
