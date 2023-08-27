@@ -3,6 +3,7 @@ import Gallery from '../Gallery/Gallery';
 import Modal from '../Modal/Modal';
 import { IComment, IImage } from '../../types';
 import Spinner from '../Spinner/Spinner';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const API_URL = 'https://api.unsplash.com/search/photos';
 const API_KEY = import.meta.env.VITE_API_KEY;
@@ -30,7 +31,7 @@ function App() {
   }
 
   if (isError) {
-    // return null;
+    return <ErrorMessage />;
   }
 
   return (
