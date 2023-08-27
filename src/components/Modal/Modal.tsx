@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useEffect, useState } from 'react';
 import { BiTimeFive, BiUser } from 'react-icons/bi';
