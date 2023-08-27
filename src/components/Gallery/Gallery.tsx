@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { IImage } from '../../types';
-import Spinner from '../Spinner/Spinner';
 import styles from './Gallery.module.scss';
 
 interface GalleryProps {
@@ -15,9 +14,6 @@ function Gallery({ setActive, setId, imageList }: GalleryProps) {
     setId(id);
   };
 
-  if (!imageList.length) {
-    return <Spinner />;
-  }
 
   return (
     <div className={styles.photoWrapper}>
