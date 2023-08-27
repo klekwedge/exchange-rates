@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useEffect, useState } from 'react';
+import { BiTimeFive, BiUser } from 'react-icons/bi';
 import { v4 } from 'uuid';
 import style from './Modal.module.scss';
 import { IComment, IImage } from '../../types';
@@ -75,12 +76,14 @@ function Modal({ active, imageList, imageId, comments, setActive, setComments }:
           {comments
             .filter((comment) => comment.imageId === imageId)
             .map((comment) => (
-              <div key={comment.id} className={style.commentBody}>
-                <div className={style.commentHeader}>
-                  <p className={style.commentAuthor}>{comment.author}</p>
-                  <p className={style.commentDate}>{comment.date.toLocaleDateString()}</p>
-                </div>
+              <div key={comment.id} className={style.comment}>
+                <p className={style.commentAuthor}>
+                  <BiUser />{comment.author}
+                </p>
                 <p className={style.commentText}>{comment.body}</p>
+                <p className={style.commentDate}>
+                  <BiTimeFive width='10px' height='10px'/>{comment.date.toLocaleString()}
+                </p>
               </div>
             ))}
         </div>

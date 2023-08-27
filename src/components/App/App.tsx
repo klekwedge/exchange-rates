@@ -19,8 +19,6 @@ function App() {
       .then((data) => setImageList(data));
   }, []);
 
-  console.log(imageList);
-
   return (
     <div className="App">
       <Gallery imageList={imageList} setActive={setModalActive} setId={setImageId} />
