@@ -69,26 +69,9 @@ function Modal({ active, imageList, imageId, comments, setActive, setComments }:
   return (
     <div onClick={(e) => closeModal(e)} className={active ? style.modalActive : style.modal}>
       <div className={style.modalContent}>
-        <div className={style.modalContentImage}>
-          <img src={modalContentData.urls.small} alt="Gallery item" />
-        </div>
-        <div className={style.comments}>
-          {comments
-            .filter((comment) => comment.imageId === imageId)
-            .map((comment) => (
-              <div key={comment.id} className={style.comment}>
-                <p className={style.commentAuthor}>
-                  <BiUser />{comment.author}
-                </p>
-                <p className={style.commentText}>{comment.body}</p>
-                <p className={style.commentDate}>
-                  <BiTimeFive width='10px' height='10px'/>{comment.date.toLocaleString()}
-                </p>
-              </div>
-            ))}
-        </div>
-        <div className={style.modalContentForm}>
-          <form>
+        <div>
+          <img className={style.modalContentImage} src={modalContentData.urls.small} alt="Gallery item" />
+          <form className={style.modalContentForm}>
             <input
               placeholder="Ваше имя"
               name="name"
@@ -106,7 +89,25 @@ function Modal({ active, imageList, imageId, comments, setActive, setComments }:
             </button>
           </form>
         </div>
-        <button type="button" className={style.closeButton} onClick={() => setActive(false)} />
+
+        <div className={style.comments}>
+          {comments
+            .filter((comment) => comment.imageId === imageId)
+            .map((comment) => (
+              <div key={comment.id} className={style.comment}>
+                <p className={style.commentAuthor}>
+                  <BiUser />
+                  {comment.author}
+                </p>
+                <p className={style.commentText}>{comment.body}</p>
+                <p className={style.commentDate}>
+                  <BiTimeFive width="10px" height="10px" />
+                  {comment.date.toLocaleString()}
+                </p>
+              </div>
+            ))}
+        </div>
+        <button type="button" className={style.closeButton} onClick={() => setActive(false)} >Закрыть</button>
       </div>
     </div>
   );

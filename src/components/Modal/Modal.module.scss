@@ -11,14 +11,14 @@
 }
 
 .modalContent {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
   width: 619px;
   height: 400px;
-  background: #ffffff;
-  display: flex;
-  position: relative;
   padding: 20px;
-  flex-wrap: wrap;
   border-radius: 5px;
+  background: #ffffff;
 }
 
 .modalContentImage,
@@ -27,14 +27,15 @@
   max-width: 331px;
 }
 
-.modalContentImage img {
+.modalContentImage {
   width: 331px;
   height: 205px;
   border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .modalContentForm button {
-  background: #4997d0;
+  background: #008ef4;
   border-radius: 6px;
   color: white;
   border: none;
@@ -44,35 +45,34 @@
   transition: all 0.5s ease;
 
   &:hover {
-    background: #1576bb;
+    background: #0b6eb4;
   }
 }
 
-.modalContentForm form {
+.modalContentForm {
   display: flex;
   flex-direction: column;
+  gap: 0px;
+  margin: 0;
 }
 
-.modalContentForm form input {
+.modalContentForm input {
   outline: none;
   padding: 2px 10px;
   border: 1px solid gray;
   border-radius: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   max-width: 361px;
   height: 30px;
 
   &:focus {
-    border: 1px solid #4997d0;
+    border: 1px solid #008ef4;
   }
 }
 
 .comments {
   flex-grow: 1;
   width: 30%;
-  margin-bottom: 20px;
-  margin-left: 15px;
-  margin-right: 30px;
   font-size: 13px;
   line-height: 15px;
 }
@@ -102,7 +102,8 @@
   font-size: 14px;
 }
 
-.commentDate, .commentAuthor {
+.commentDate,
+.commentAuthor {
   display: flex;
   align-items: center;
   gap: 3px;
@@ -114,26 +115,40 @@
 }
 
 .closeButton {
-  position: absolute;
-  top: 21px;
-  right: 21px;
-  width: 18px;
-  height: 18px;
-  background: url('../../../public/img/close.svg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 18px 18px;
-  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: #008ef4;
+  border: 1px solid #008ef4;
+  transition: all 0.5s ease;
+  outline: none;
+  margin-left: auto;
   cursor: pointer;
+
+  &:hover {
+    color: #008ef4;
+    background: white;
+  }
 }
 
-@media (max-width: 612px) {
+@media (max-width: 768px) {
   .modalContent {
     width: 100vw;
     height: 100vh;
     flex-wrap: nowrap;
     flex-direction: column;
-    padding: 0;
+    padding: 30px;
+    overflow-y: scroll;
+  }
+
+  .comments {
+    width: 100%;
+    margin: 0;
+  }
+
+  .closeButton {
+    top: 40px;
+    right: 6px;
   }
 
   .modalContentForm,
@@ -145,19 +160,16 @@
   .modalContentImage {
     width: 100%;
     max-width: 100%;
+    margin-bottom: 15px;
   }
 
-  .modalContentImage img {
+  .modalContentImage {
     width: 100%;
     height: auto;
   }
 
-  .comments {
-    margin: 12px 0 0 22px;
-  }
-
   .modalContentForm {
-    margin: 0 22px;
+    margin: 30px 0px;
     max-width: 100%;
   }
 
