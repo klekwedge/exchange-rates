@@ -20,6 +20,9 @@ function Modal({ active, imageList, imageId, comments, setActive, setComments }:
   const [authorName, setAuthorName] = useState('');
   const [authorComment, setAuthorComment] = useState('');
 
+  const [authorNameError, setAuthorNameError] = useState(false);
+  const [authorCommentError, setAuthorCommentError] = useState(false);
+
   const closeModal = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.currentTarget === e.target) {
       setActive(false);
@@ -28,6 +31,10 @@ function Modal({ active, imageList, imageId, comments, setActive, setComments }:
 
   function handleSubmit(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
+
+    setAuthorCommentError(!authorComment);
+    setAuthorNameError(!authorName);
+
     if (authorComment && authorName) {
       setComments([
         ...comments,
@@ -44,6 +51,7 @@ function Modal({ active, imageList, imageId, comments, setActive, setComments }:
       setAuthorComment('');
     }
   }
+
   useEffect(() => {
     document.body.style.overflow = 'hidden';
 
@@ -73,14 +81,18 @@ function Modal({ active, imageList, imageId, comments, setActive, setComments }:
             <img className={style.modalContentImage} src={modalContentData.urls.small} alt="Gallery item" />
             <form className={style.modalContentForm}>
               <input
+                style={{ border: authorNameError ? '1px solid red' : '1px solid gray' }}
                 placeholder="Ваше имя"
                 name="name"
+                required
                 value={authorName}
                 onChange={(e) => setAuthorName(e.target.value)}
               />
               <input
+                style={{ border: authorCommentError ? '1px solid red' : '1px solid gray' }}
                 placeholder="Ваш комментарий"
                 name="comment"
+                required
                 value={authorComment}
                 onChange={(e) => setAuthorComment(e.target.value)}
               />
