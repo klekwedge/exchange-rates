@@ -14,6 +14,8 @@ function Gallery({ setActive, setId, imageList }: GalleryProps) {
     setId(id);
   };
 
+  console.log(imageList);
+
 
   return (
     <div className={styles.photoWrapper}>

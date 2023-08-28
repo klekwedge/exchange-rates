@@ -11,15 +11,16 @@ export interface IImage {
     blur_hash: string;
     description: string;
     alt_description: string;
-    IUrls: any[];
     urls: IUrls;
     links: ILinks;
     likes: number;
     liked_by_user: boolean;
     current_user_collections: any[];
-    sponsorship: ISponsorship;
+    sponsorship: ISponsorship | null;
     topic_submissions: any;
     user: IUser;
+    breadcrumbs: string[]
+    tags: object[];
 }
 
 export interface ILinks {
@@ -42,14 +43,14 @@ export interface IUser {
     username: string;
     name: string;
     first_name: string;
-    last_name: null;
-    twitter_username: string;
+    last_name: string | null;
+    twitter_username: string | null;
     portfolio_url: string;
-    bio: string;
-    location: string;
+    bio: string | null;
+    location: string | null;
     links: IUserLinks;
     profile_image: IProfileImage;
-    instagram_username: string;
+    instagram_username: string | null;
     total_collections: number;
     total_likes: number;
     total_photos: number;
@@ -75,9 +76,9 @@ export interface IProfileImage {
 }
 
 export interface ISocial {
-    instagram_username: string;
-    portfolio_url: string;
-    twitter_username: string;
+    instagram_username: string | null;
+    portfolio_url: string ;
+    twitter_username: string | null;
     paypal_email: null;
 }
 
