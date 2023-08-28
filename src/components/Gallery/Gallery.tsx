@@ -18,7 +18,7 @@ function Gallery({ setActive, setId, imageList }: GalleryProps) {
 
 
   return (
-    <div className={styles.photoWrapper}>
+    <div className={styles.photoWrapper} data-testid='gallery'>
       {imageList.map((photo) => (
         <img
           key={photo.id}
