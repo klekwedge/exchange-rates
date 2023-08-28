@@ -10,7 +10,7 @@
   justify-content: center;
 }
 
-.modalContent {
+.modalKeep {
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -21,23 +21,28 @@
   background: #ffffff;
 }
 
-.modalBody {
+.modalContent {
   display: flex;
   gap: 15px;
 }
 
-.modalContentImage {
-  max-height: 200px;
+.modalBody, .comments {
+  flex: 1 1 50%;
+}
+
+
+.modalImage {
+  width: 100%;
   border-radius: 5px;
   margin-bottom: 10px;
 }
 
-.modalContentForm button {
+.modalForm button {
   background: #008ef4;
   border-radius: 6px;
   color: white;
   border: none;
-  max-width: 331px;
+  max-width: 170px;
   height: 30px;
   cursor: pointer;
   transition: all 0.5s ease;
@@ -47,13 +52,13 @@
   }
 }
 
-.modalContentForm {
+.modalForm {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.modalContentForm input {
+.modalForm input {
   outline: none;
   padding: 2px 10px;
   border-radius: 5px;
@@ -67,7 +72,6 @@
 .comments {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
   max-height: 340px;
   overflow-y: scroll;
   gap: 10px;
@@ -119,20 +123,17 @@
 }
 
 @media (max-width: 768px) {
-  .modalBody {
+  .modalContent {
     flex-direction: column;
+    padding-top: 50px;
   }
 
-  .modalContent {
+  .modalKeep {
     width: 100vw;
     height: 100vh;
     flex-direction: column;
     padding: 0px 15px 15px;
     overflow-y: scroll;
-  }
-
-  .modalBody {
-    padding-top: 50px;
   }
 
   .comments {
@@ -144,18 +145,9 @@
     right: 6px;
   }
 
-  .modalContentImage {
+  .modalImage {
     width: 100%;
     max-width: 100%;
     max-height: 100%;
-  }
-
-  .modalContentImage {
-    width: 100%;
-    height: auto;
-  }
-
-  .modalContentForm button {
-    max-width: 170px;
   }
 }

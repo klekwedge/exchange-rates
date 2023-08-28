@@ -75,11 +75,11 @@ function Modal({ active, imageList, imageId, comments, setActive, setComments }:
 
   return (
     <div onClick={(e) => closeModal(e)} className={active ? style.modalActive : style.modal}>
-      <div className={style.modalContent}>
-        <div className={style.modalBody}>
-          <div>
-            <img className={style.modalContentImage} src={modalContentData.urls.small} alt="Gallery item" />
-            <form className={style.modalContentForm}>
+      <div className={style.modalKeep}>
+        <div className={style.modalContent}>
+          <div className={style.modalBody}>
+            <img className={style.modalImage} src={modalContentData.urls.small} alt="Gallery item" />
+            <form className={style.modalForm}>
               <input
                 style={{ border: authorNameError ? '1px solid red' : '1px solid gray' }}
                 placeholder="Ваше имя"
