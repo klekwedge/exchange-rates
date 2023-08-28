@@ -14,10 +14,10 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  width: 619px;
-  height: 400px;
-  padding: 20px 20px 0px;
-  border-radius: 5px;
+  width: 100%;
+  max-width: 700px;
+  padding: 20px;
+  border-radius: 3px;
   background: #ffffff;
 }
 
@@ -26,15 +26,8 @@
   gap: 15px;
 }
 
-.modalContentImage,
-.modalContentForm {
-  flex-grow: 1;
-  max-width: 331px;
-}
-
 .modalContentImage {
-  width: 331px;
-  height: 205px;
+  max-height: 200px;
   border-radius: 5px;
   margin-bottom: 10px;
 }
@@ -57,8 +50,7 @@
 .modalContentForm {
   display: flex;
   flex-direction: column;
-  gap: 0px;
-  margin: 0;
+  gap: 10px;
 }
 
 .modalContentForm input {
@@ -66,7 +58,6 @@
   padding: 2px 10px;
   border: 1px solid gray;
   border-radius: 5px;
-  margin-bottom: 10px;
   height: 30px;
 
   &:focus {
@@ -75,26 +66,18 @@
 }
 
 .comments {
+  display: flex;
+  flex-direction: column;
   flex-grow: 1;
-  font-size: 13px;
-  line-height: 15px;
   max-height: 340px;
   overflow-y: scroll;
-}
-
-.commentHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px 10px;
-  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .comment {
-  margin-bottom: 10px;
   border: 1px solid gray;
   border-radius: 5px;
-  padding: 5px;
+  padding: 10px 15px;
 }
 
 .commentAuthor {
@@ -150,12 +133,11 @@
   }
 
   .modalBody {
-    padding-top: 25px;
+    padding-top: 50px;
   }
 
   .comments {
     width: 100%;
-    margin: 0;
   }
 
   .closeButton {
@@ -163,25 +145,15 @@
     right: 6px;
   }
 
-  .modalContentForm,
-  .modalContentImage,
-  .comments {
-    flex-grow: 0;
-  }
-
   .modalContentImage {
     width: 100%;
     max-width: 100%;
-    margin-bottom: 15px;
+    max-height: 100%;
   }
 
   .modalContentImage {
     width: 100%;
     height: auto;
-  }
-
-  .modalContentForm {
-    max-width: 100%;
   }
 
   .modalContentForm button {

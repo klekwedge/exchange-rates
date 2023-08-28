@@ -107,7 +107,6 @@ function Modal({ active, imageList, imageId, comments, setActive, setComments }:
               ))}
           </div>
         </div>
-
         <button type="button" className={style.closeButton} onClick={() => setActive(false)}>
           Закрыть
         </button>
