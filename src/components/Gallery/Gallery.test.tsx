@@ -1,6 +1,7 @@
-import { render } from '@testing-library/react';
-import Modal from './Modal';
-import { IComment, IImage } from '../../types';
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react';
+import Gallery from './Gallery';
+import { IImage } from '../../types';
 
 const mockImageList: IImage[] = [
   {
@@ -609,20 +610,23 @@ const mockImageList: IImage[] = [
   },
 ];
 
-const mockComments: IComment[] = [];
-
-describe('Modal component', () => {
+describe('Gallery компонент', () => {
   it('должен рендериться без ошибок', () => {
     const { container } = render(
-      <Modal
-        active
-        imageList={mockImageList}
-        imageId="1"
-        comments={mockComments}
-        setActive={() => {}}
-        setComments={() => {}}
-      />,
+      <Gallery setActive={() => {}} setId={() => {}} imageList={mockImageList} />
     );
     expect(container).toBeInTheDocument();
+  });
+
+  it('должен отображать изображения из imageList', () => {
+    const { getByAltText } = render(
+      <Gallery setActive={() => {}} setId={() => {}} imageList={mockImageList} />
+    );
+
+    const image1 = getByAltText('white and brown city buildings during daytime');
+    const image2 = getByAltText('high rise buildings city scape photography');
+
+    expect(image1).toBeInTheDocument();
+    expect(image2).toBeInTheDocument();
   });
 });
